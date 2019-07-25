@@ -1,19 +1,10 @@
 '''
-Title: Create a text file called Todo.txt using the following data, one line per row: Clean House,low Pay Bills,
-high When the program starts, load each row of data from the ToDo.txt text file into a Python list. After you load the
-data into a list, loop through the list and add each item as a "key,value" pair a new dictionary. After you have added
-existing data to the dictionary, use the menu structure included in the template to allow the user to Add or Remove
-tasks from the dictionary using numbered choices and then Save the data from the table into the Todo.txt file when
-the program exits.
-    Menu of Options
-    1) Show current data
-    2) Add a new item.
-    3) Remove an existing item.
-    4) Save Data to File
-    5) Exit Program
+Title: create a scrip to read ToDo list from a text file and to do following tasks Show current data, Add a new item,
+       Remove an existing item, Save Data to File and Exit Program(hw5.py)
 Date: 7/24/2019
 Dev: Kiran Varaganti
 Dependencies: python 3x
+
 '''
 
 infile = "ToDo.txt"
@@ -26,8 +17,8 @@ task_dict = {}
 
 # Run loop to put the store it in a dictionary.
 for line in lines:
-   task = line.split(',')[0]
-   priority = line.split(',')[1]
+   task = line.split(',')[0].strip()
+   priority = line.split(',')[1].strip()
    task_dict[task] = priority
 
 while(True):
@@ -46,8 +37,8 @@ while(True):
     if (strChoice.strip() == '1'):
         # loop through the dictionary here and print items
         for task in task_dict:
-            priority = task_dict[task]
-            print("Task:{}, Priority:{}\n".format(task,priority))
+            #priority = task_dict[task]
+            print("Task:{}, Priority:{}".format(task,task_dict[task]))
 
 # Choice 2 - Add a new item to the list/Table
     elif(strChoice.strip() == '2'):
@@ -55,7 +46,7 @@ while(True):
        if task not in task_dict:
             priority = input("Enter the priority of the task entered:")
             # add a new key, value pair to the dictionary
-            task_dict[task] = priority
+            task_dict.update({task:priority})
        else: print("Task not added, it is already exists.")
 
 #Choice 3 - Remove a new item to the list/Table
@@ -70,8 +61,7 @@ while(True):
     elif (strChoice == '4'):
         with open("Todo.txt", "w") as infile:  # open a file handle
             for task in task_dict:  # loop through key, value and write to file
-                task_dict[task] = priority
-                infile.write("{}, {}\n".format(task, priority))
+                infile.write("{}, {}\n".format(task,task_dict[task]))
 # Choice 5- end the program
     elif (strChoice.strip() == '5'):
         print("Good-bye.")
