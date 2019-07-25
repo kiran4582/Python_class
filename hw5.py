@@ -4,7 +4,6 @@ Title: create a scrip to read ToDo list from a text file and to do following tas
 Date: 7/24/2019
 Dev: Kiran Varaganti
 Dependencies: python 3x
-
 '''
 
 infile = "ToDo.txt"
@@ -37,7 +36,6 @@ while(True):
     if (strChoice.strip() == '1'):
         # loop through the dictionary here and print items
         for task in task_dict:
-            #priority = task_dict[task]
             print("Task:{}, Priority:{}".format(task,task_dict[task]))
 
 # Choice 2 - Add a new item to the list/Table
