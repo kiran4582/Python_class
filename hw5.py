@@ -13,13 +13,13 @@ with open(infile, 'r') as todo_file:
     lines = todo_file.readlines()
 # create empty dictionary to store data as we loop
 task_dict = {}
-
+print(lines)
 # Run loop to put the store it in a dictionary.
 for line in lines:
    task = line.split(',')[0].strip()
    priority = line.split(',')[1].strip()
    task_dict[task] = priority
-
+print(task_dict)
 while(True):
     print ("""
     Menu of Options
@@ -41,7 +41,7 @@ while(True):
 # Choice 2 - Add a new item to the list/Table
     elif(strChoice.strip() == '2'):
        task = input("Enter the task:")
-       if task not in task_dict:
+       if task not in task_dict: #checking so that we don't enter a duplicate task
             priority = input("Enter the priority of the task entered:")
             # add a new key, value pair to the dictionary
             task_dict.update({task:priority})
