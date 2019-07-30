@@ -6,20 +6,20 @@ Dev: Kiran Varaganti
 Dependencies: python 3x
 '''
 
-infile = "ToDo.txt"
+infile = "ToDo.txt"#store path of ToDo.txt file as a variable so that it can be accessed later in the program
 
 # read in ToDo.txt here
 with open(infile, 'r') as todo_file:
     lines = todo_file.readlines()
 # create empty dictionary to store data as we loop
 task_dict = {}
-print(lines)
+
 # Run loop to put the store it in a dictionary.
 for line in lines:
    task = line.split(',')[0].strip()
    priority = line.split(',')[1].strip()
    task_dict[task] = priority
-print(task_dict)
+
 while(True):
     print ("""
     Menu of Options
@@ -40,12 +40,13 @@ while(True):
 
 # Choice 2 - Add a new item to the list/Table
     elif(strChoice.strip() == '2'):
-       task = input("Enter the task:")
-       if task not in task_dict: #checking so that we don't enter a duplicate task
-            priority = input("Enter the priority of the task entered:")
+       NewTask = input("Enter the task:")
+       if NewTask not in task_dict: #checking so that we don't enter a duplicate task
+            NewPriority = input("Enter the priority of the task entered:")
             # add a new key, value pair to the dictionary
-            task_dict.update({task:priority})
-       else: print("Task not added, it is already exists.")
+            task_dict.update({NewTask:NewPriority})
+            print("\nTask is added to the list")
+       else: print("\nEntered task not added, it already exists in the list.")
 
 #Choice 3 - Remove a new item to the list/Table
     elif(strChoice == '3'):
@@ -53,14 +54,16 @@ while(True):
         # locate key and delete it using del function
         if remove_key in task_dict:
            del task_dict[remove_key]
-        else:print("The entered task doesn't exist")
+           print("\nTask is deleted from the list")
+        else:print("\nEntered task not deleted, it doesn't exist in the list")
 
 # Choice 4 - Save tasks to the ToDo.txt file
     elif (strChoice == '4'):
         with open("Todo.txt", "w") as infile:  # open a file handle
             for task in task_dict:  # loop through key, value and write to file
                 infile.write("{}, {}\n".format(task,task_dict[task]))
+            print("\nData saved to the file")
 # Choice 5- end the program
     elif (strChoice.strip() == '5'):
-        print("Good-bye.")
+        print("\nGood-bye.")
         break  # and Exit the program
