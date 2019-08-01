@@ -1,5 +1,5 @@
 '''
-Title: create a scrip to read ToDo list from a text file and to do following tasks: Show current data, Add a new item,
+Title: create a script to read ToDo list from a text file and do following tasks: Show current data, Add a new item,
        Remove an existing item, Save Data to File and Exit Program(hw5.py)
 Date: 7/24/2019
 Dev: Kiran Varaganti
